@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
 import { useSearch } from '../contexts/SearchContext';
+import { API_ENDPOINTS } from '../config/api';
 
 interface HojaRuta {
   id: number;
@@ -56,7 +57,7 @@ const RegistrosPage: React.FC<RegistrosPageProps> = ({ onHojaSelected }) => {
     setError('');
     try {
       console.log('🔍 Buscando con query:', search);
-      const res = await axios.get('http://localhost:3001/api/hojas-ruta', {
+      const res = await axios.get(API_ENDPOINTS.HOJAS_RUTA, {
         params: search ? { query: search } : {},
         headers: { Authorization: `Bearer ${token}` }
       });

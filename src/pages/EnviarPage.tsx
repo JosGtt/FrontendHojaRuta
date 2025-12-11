@@ -4,6 +4,7 @@ import EnviarIcon from '../assets/enviar';
 import SendIcon from '../assets/send';
 import ArchivoIcon from '../assets/archivo';
 import { useAuth } from '../contexts/AuthContext';
+import { API_ENDPOINTS } from '../config/api';
 
 interface HojaRuta {
   id: number;
@@ -29,7 +30,7 @@ const EnviarPage: React.FC = () => {
       
       try {
         console.log('📋 Cargando hojas de ruta...');
-        const res = await axios.get('http://localhost:3001/api/hojas-ruta', { 
+        const res = await axios.get(API_ENDPOINTS.HOJAS_RUTA, { 
           headers: { Authorization: `Bearer ${token}` } 
         });
         setHojas(res.data || []);
@@ -92,7 +93,7 @@ const EnviarPage: React.FC = () => {
 
       console.log('📦 Payload:', payload);
 
-      const res = await axios.post('http://localhost:3001/api/enviar', payload, {
+      const res = await axios.post(API_ENDPOINTS.ENVIAR, payload, {
         headers: { 
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'

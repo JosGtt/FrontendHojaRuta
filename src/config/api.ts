@@ -4,6 +4,7 @@ export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:30
 // URL completa para las rutas de API
 export const API_ENDPOINTS = {
   AUTH: `${API_BASE_URL}/api/auth`,
+  LOGIN: `${API_BASE_URL}/api/auth/login`,
   HOJAS_RUTA: `${API_BASE_URL}/api/hojas-ruta`,
   DESTINOS: `${API_BASE_URL}/api/destinos`,
   ENVIAR: `${API_BASE_URL}/api/enviar`,

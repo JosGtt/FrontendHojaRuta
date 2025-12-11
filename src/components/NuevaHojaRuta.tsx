@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { API_ENDPOINTS } from '../config/api';
 import jsPDF from 'jspdf';
 import domtoimage from 'dom-to-image';
 import GuardarIcon from '../assets/guardaron';
@@ -115,7 +116,7 @@ const NuevaHojaRuta: React.FC = () => {
     const cargarDestinos = async () => {
       try {
         console.log('🔄 Cargando destinos disponibles...');
-        const response = await axios.get('http://localhost:3001/api/destinos');
+        const response = await axios.get(API_ENDPOINTS.DESTINOS);
         console.log('📥 Respuesta de destinos:', response.data);
         if (response.data.success) {
           // Aplanar las categorías en un solo array y agregar tipos
@@ -195,7 +196,7 @@ const NuevaHojaRuta: React.FC = () => {
         ubicacion_actual: formData.destino_principal || 'SEDEGES - Sede Central', // Usar destino principal como ubicación inicial
         responsable_actual: formData.destino_principal ? `Responsable de ${formData.destino_principal}` : 'Sistema SEDEGES'
       };
-      await axios.post('http://localhost:3001/api/hojas-ruta', payload, {
+      await axios.post(API_ENDPOINTS.HOJAS_RUTA, payload, {
         headers: {
           Authorization: `Bearer ${token}`
         }

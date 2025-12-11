@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
+import { API_ENDPOINTS } from '../config/api';
 import HojaRutaPreview from './HojaRutaPreview';
 import jsPDF from 'jspdf';
 import domtoimage from 'dom-to-image';
@@ -84,7 +85,7 @@ const HojaRutaDetalleView: React.FC<HojaRutaDetalleViewProps> = ({ hoja, onBack 
       }
       
       // Enviar actualización al backend
-      await axios.put(`http://localhost:3001/api/hojas-ruta/${hojaCompleta.id}`, updatedHoja, {
+      await axios.put(`${API_ENDPOINTS.HOJAS_RUTA}/${hojaCompleta.id}`, updatedHoja, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -290,7 +291,7 @@ const HojaRutaDetalleView: React.FC<HojaRutaDetalleViewProps> = ({ hoja, onBack 
     console.log('📝 Mapeo a backend:', estadoBackend);
     console.log('📝 ID de hoja:', hojaCompleta.id);
     console.log('📝 Token presente:', !!token);
-    console.log('📝 URL completa:', `http://localhost:3001/api/hojas-ruta/${hojaCompleta.id}/estado`);
+    console.log('📝 URL completa:', `${API_ENDPOINTS.HOJAS_RUTA}/${hojaCompleta.id}/estado`);
     
     const payload = { 
       estado_cumplimiento: estadoBackend,
@@ -303,7 +304,7 @@ const HojaRutaDetalleView: React.FC<HojaRutaDetalleViewProps> = ({ hoja, onBack 
       console.log('🚀 Enviando request PATCH...');
       
       const response = await axios.patch(
-        `http://localhost:3001/api/hojas-ruta/${hojaCompleta.id}/estado`,
+        `${API_ENDPOINTS.HOJAS_RUTA}/${hojaCompleta.id}/estado`,
         payload,
         { 
           headers: { 
@@ -366,7 +367,7 @@ const HojaRutaDetalleView: React.FC<HojaRutaDetalleViewProps> = ({ hoja, onBack 
   const fetchHojaCompleta = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:3001/api/hojas-ruta/${hoja.id}`, {
+      const response = await axios.get(`${API_ENDPOINTS.HOJAS_RUTA}/${hoja.id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setHojaCompleta(response.data);
