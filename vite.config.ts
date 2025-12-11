@@ -10,13 +10,15 @@ export default defineConfig({
     host: true,
   },
   preview: {
-    port: parseInt(process.env.PORT || '4173'),
+    port: process.env.PORT ? parseInt(process.env.PORT) : 4173,
     host: '0.0.0.0',
+    strictPort: false,
   },
   build: {
     outDir: 'dist',
     sourcemap: false,
-    minify: 'terser',
+    minify: 'esbuild',
+    target: 'esnext',
     rollupOptions: {
       output: {
         manualChunks: {
