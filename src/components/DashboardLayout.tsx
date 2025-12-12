@@ -128,9 +128,6 @@ const DashboardLayout: React.FC = () => {
                   <button onClick={() => setUserMenuOpen(v => !v)} className="p-1 rounded-full bg-transparent border border-[rgba(255,255,255,0.06)] focus:outline-none">
                     <UsuarioIcon width={28} height={28} />
                   </button>
-                  {userMenuOpen && (
-                    <UserMenu onLogout={handleLogout} user={user || {}} />
-                  )}
                 </div>
               </div>
             </div>
@@ -140,6 +137,7 @@ const DashboardLayout: React.FC = () => {
     </div>
   </header>
         {userMenuOpen && <div className="fixed inset-0" onClick={() => setUserMenuOpen(false)} style={{ zIndex: 999998 }} />}
+        {userMenuOpen && <UserMenu onLogout={handleLogout} user={user || {}} />}
         {/* Zona central (contenido) */}
         <main className="flex-1 flex flex-col min-h-screen bg-transparent animate-fade-in-up">
           <div className="w-full max-w-6xl mx-auto mt-0 px-4 py-4 transform -translate-y-4">
