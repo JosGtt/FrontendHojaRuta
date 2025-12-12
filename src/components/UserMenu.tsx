@@ -18,12 +18,13 @@ const UserMenu = ({ onLogout, user }: UserMenuProps) => {
 
   return (
     <div 
-      className="absolute right-0 mt-2 w-72 rounded-2xl shadow-2xl z-9999 overflow-hidden"
+      className="fixed top-16 right-6 w-72 rounded-2xl shadow-2xl overflow-hidden"
       style={{
         background: 'rgba(0, 0, 0, 0.4)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        border: '1px solid rgba(255, 255, 255, 0.18)'
+        border: '1px solid rgba(255, 255, 255, 0.18)',
+        zIndex: 99999
       }}
     >
       {/* Header con info del usuario */}
