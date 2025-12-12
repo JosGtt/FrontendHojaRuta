@@ -3,7 +3,7 @@ import Sidebar from './Sidebar';
 import UsuarioIcon from '../assets/usario';
 import NotificationIcon from '../assets/notification';
 import LupayIcon from '../assets/lupay';
-import CerrarLogo from '../assets/cerrar';
+import UserMenu from './UserMenu';
 import NuevaHojaRuta from './NuevaHojaRuta';
 import RegistrosPage from '../pages/RegistrosPageClean';
 import HistorialPage from '../pages/HistorialPage';
@@ -22,7 +22,7 @@ const DashboardLayout: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('inicio');
   const [selectedHoja, setSelectedHoja] = useState<any>(null); // Estado para hoja seleccionada
   const { query, setQuery } = useSearch();
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   const expanded = menuOpen || sidebarFixed;
 
@@ -129,17 +129,7 @@ const DashboardLayout: React.FC = () => {
                     <UsuarioIcon width={28} height={28} />
                   </button>
                   {userMenuOpen && (
-                    <div className="absolute right-0 mt-2 w-40 rounded-lg shadow-lg z-50" style={{
-                      background: 'rgba(0, 0, 0, 0.4)',
-                      backdropFilter: 'blur(20px)',
-                      WebkitBackdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(255, 255, 255, 0.18)'
-                    }}>
-                      <button onClick={handleLogout} className="w-full text-left px-4 py-3 hover:bg-[rgba(255,255,255,0.08)] text-white flex items-center gap-2 rounded-lg">
-                        <CerrarLogo width={16} height={16} fill="currentColor" />
-                        Cerrar sesión
-                      </button>
-                    </div>
+                    <UserMenu onLogout={handleLogout} user={user || {}} />
                   )}
                 </div>
               </div>
