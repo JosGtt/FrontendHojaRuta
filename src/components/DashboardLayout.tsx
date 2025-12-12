@@ -124,7 +124,7 @@ const DashboardLayout: React.FC = () => {
                   <NotificationIcon width={20} height={20} />
                 </button>
 
-                <div className="relative">
+                <div className="relative z-9999">
                   <button onClick={() => setUserMenuOpen(v => !v)} className="p-1 rounded-full bg-transparent border border-[rgba(255,255,255,0.06)] focus:outline-none">
                     <UsuarioIcon width={28} height={28} />
                   </button>

@@ -18,7 +18,7 @@ const UserMenu = ({ onLogout, user }: UserMenuProps) => {
 
   return (
     <div 
-      className="absolute right-0 mt-2 w-72 rounded-2xl shadow-2xl z-50 overflow-hidden"
+      className="absolute right-0 mt-2 w-72 rounded-2xl shadow-2xl z-9999 overflow-hidden"
       style={{
         background: 'rgba(0, 0, 0, 0.4)',
         backdropFilter: 'blur(20px)',
