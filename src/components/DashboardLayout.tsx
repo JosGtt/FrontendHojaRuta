@@ -139,7 +139,7 @@ const DashboardLayout: React.FC = () => {
       </div>
     </div>
   </header>
-        {userMenuOpen && <div className="fixed inset-0 z-40" onClick={() => setUserMenuOpen(false)} />}
+        {userMenuOpen && <div className="fixed inset-0" onClick={() => setUserMenuOpen(false)} style={{ zIndex: 999998 }} />}
         {/* Zona central (contenido) */}
         <main className="flex-1 flex flex-col min-h-screen bg-transparent animate-fade-in-up">
           <div className="w-full max-w-6xl mx-auto mt-0 px-4 py-4 transform -translate-y-4">

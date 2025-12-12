@@ -24,7 +24,7 @@ const UserMenu = ({ onLogout, user }: UserMenuProps) => {
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
         border: '1px solid rgba(255, 255, 255, 0.18)',
-        zIndex: 99999
+        zIndex: 999999
       }}
     >
       {/* Header con info del usuario */}
